@@ -1,0 +1,258 @@
+.navbar-brand{
+    font-weight: 600;
+    font-size: 26px !important;
+}
+.nav-link{
+    font-size: 17px;
+    margin: 0 6px;
+    color: #000 !important;
+    font-weight: 500;
+}
+.nav-link:hover{
+    color: #606060 !important;
+}
+.profile {
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    background-color: #f5cfcf;
+    color: #d00101;
+    padding: 2px;
+    font-weight: 700;
+    border-radius: 50%;
+}
+.filter h3{
+    font-size: 14px;
+    margin: 13px;
+}
+.csv-heading h3{
+    font-size: 16px;
+    margin: 13px;
+}
+.filter-btn{
+    border: none;
+    padding: 5px 19px;
+    font-size: 15px;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid #efefef !important;
+    margin: 10px;
+
+}
+.filter-btn:hover{
+    background-color:#efefef !important;
+}
+.filter-btn span {
+    margin: 0 10px;
+    background: #efefef;
+    font-size: 13px;
+    padding: 3px 10px 4px;
+    border-radius: 7px;
+    line-height: 13px;
+}
+#dropdown-basic::after {
+    display: none; /* This hides the default caret icon */
+  }
+  .css-1p3m7a8-multiValue{
+    display: none !important;
+  }
+  .css-1p3m7a8-multiValue:first-child{
+    display: flex !important;
+  }
+  .css-13cymwt-control {
+    border: 1px solid #efefef !important;
+    padding: 0px 10px 2px !important;
+    border-radius: 7px !important;
+    margin: 0 8px !important;
+}
+.css-13cymwt-control:hover {
+    background-color: #efefef !important;
+}
+
+  .css-t3ipsp-control{
+    box-shadow: none !important;
+    border: none !important;
+    background-color: #efefef !important;
+    padding: 0px 10px 2px !important;
+    border-radius: 7px !important;
+    margin: 0 8px !important;    
+  }
+  .css-t3ipsp-control:hover{
+    border-color: #efefef !important;
+    background-color: #efefef !important;
+  }
+  .css-1jqq78o-placeholder{
+    color: #000 !important;
+    font-weight:400;
+    opacity: 1 !important;
+  }
+  .css-1xc3v61-indicatorContainer{
+    display: none !important;
+  }
+  .css-1u9des2-indicatorSeparator{
+    display: none !important;
+  }
+  .css-15lsz6c-indicatorContainer{
+    display: none !important;
+  }
+  .css-1nmdiq5-menu{
+    padding: 10px 30px !important;
+    width: 200px !important;
+  }
+  .css-1nmdiq5-menu input{
+    cursor: pointer;
+  }
+  .css-1p3m7a8-multiValue{
+    background: linear-gradient(0deg, rgba(75,120,188,1) 0%, rgba(0,183,237,1) 100%) !important;
+    color: #fff !important;
+    border-radius: 10px !important;
+  }
+  .css-9jq23d{
+    color: #fff !important;
+  }
+  .clear-btn{
+    border: none;
+    background: transparent;
+    color: #4b78bc;
+    font-size: 13px;
+    padding: 5px 20px 6px;
+    border: 1px solid #4b78bc !important;
+    border-radius: 10px;
+
+  }
+  .clear-btn:hover{
+        background: linear-gradient(0deg, rgba(75, 120, 188, 1) 0%, rgba(0, 183, 237, 1) 100%) ;
+        color: #fff;
+  }
+  .left-box h1 , .right-box h2{
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+  }
+  .left-box p , .right-box p{
+    font-size: 12px;
+    margin: 0;
+    margin-left: 11px;
+  }
+  .left-box , .right-box {
+    margin: 34px 10px;
+    padding: 30px;
+    border: 1px solid #efefef;
+    box-shadow: 2px 2px 10px #efefef;
+    border-radius: 11px;
+  }
+.left-box p span{
+  color: green;
+}
+.right-box h3{
+  font-size: 13px;
+  margin: 0;
+  color: grey;
+}
+.plus-btn{
+  background: #efefef !important;
+  border: none;
+  font-size: 22px;
+  line-height: 23px;
+  font-weight: 500;
+  padding: 3px 10px 7px;
+  border-radius: 7px;
+  margin-left:30px;
+}
+.form-control{
+  border: 1px solid #4b78bc !important;
+  border-radius: 10px !important;
+}
+.form-control:focus{
+  box-shadow: 0 0 5px #00b7ed !important;
+}
+
+/* file */
+.file-uploader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed #4b78bc;
+  border-radius: 35px;
+  width: 95%;
+  padding: 40px;
+  background-color: #fdfdfd;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  margin: 31px auto;
+}
+
+.file-uploader:hover {
+  background-color: #e8f4fd;
+}
+
+.file-input {
+  display: none;
+}
+
+/* Label styling */
+.file-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+}
+
+.file-label i {
+  font-size: 36px;
+  color: #007bff;
+  margin-right: 10px;
+}
+
+/* Transition for file label */
+.file-label span {
+  color: #5d5c5c;
+}
+
+.file-uploader input[type="file"]:focus + label {
+  outline: 2px solid #007bff;
+}
+.file-upload-icon {
+  font-size: 17px;
+  font-weight: 500;
+  margin-right: 7px;
+}
+.form-manual{
+  background-color: #fdfdfd;
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid #efefef;
+}
+.form-manual .form-control {
+  background: transparent !important;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  height: 45px;
+  border-radius: 7px !important;
+  width: 97% !important;
+  margin: 0 auto;
+}
+.form-manual label{
+margin-left: 2px;
+margin-top: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .file-uploader {
+    width: 90%;
+  }
+
+  .file-label i {
+    font-size: 24px;
+  }
+}
+
+/* modal css */
+.modal-dialog {
+  max-width: 90% !important;
+  overflow-x: scroll !important;
+}

@@ -1,0 +1,48 @@
+.card{
+    box-shadow: 3px 3px 10px #ddd;
+    border-radius: 20px !important;
+}
+.btn-hover {
+    width: 200px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    height: 44px;
+    text-align:center;
+    border: none !important;
+    background-size: 300% 100%;
+    border-radius: 10px !important;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);
+    box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+}
+
+.btn-hover:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+.input{
+    box-shadow: 0 0px 0px 1px rgba(126, 52, 161, 0.75) !important;
+    border: none;
+    border-radius: 10px !important;
+}
+.input:focus{
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+.title{
+    letter-spacing: 2px;
+    font-size: 30px !important;
+}
