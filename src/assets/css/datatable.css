@@ -154,3 +154,8 @@ margin-top: 30px;
 .btn:disabled{
   display: none !important;
 }
+.ButtonGroup__root {
+    position: static !important; */
+    margin-top: 20px;
+
+}

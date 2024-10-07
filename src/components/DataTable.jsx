@@ -29,28 +29,31 @@ const header = [
   { title: 'Country', prop: 'country', sortable: true },
 ];
 
-const DataTable = ({ countryOption, selectedOptions, startPrice, endPrice, startDR, endDR, startDA, endDA, langOption, nicheOption, startPA , endPA ,startSpam , endSpam ,startAhrefTraffic , endAhrefTraffic , startSEMRushTraffic , endSEMRushTraffic  }) => {
-  const [data, setData] = useState([]); // State to hold the fetched data
+const DataTable = ({
+  countryOption, selectedOptions, startPrice, endPrice, startDR, endDR,
+  startDA, endDA, langOption, nicheOption, startPA, endPA, startSpam, endSpam, startAhrefTraffic, 
+  endAhrefTraffic, startSEMRushTraffic, endSEMRushTraffic,searchTerm
+}) => {
+  const [data, setData] = useState([]); 
   const [category, setCategory] = useState('');
   const [country, setCountry] = useState('');
   const [language, setLanguage] = useState('');
   const [niche, setNiche] = useState('');
 
-  
 
   // Fetch data from server
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://3.110.194.148:5000/api/data'); 
+        const response = await axios.get('http://3.110.194.148:5000/api/data');
         const serverData = response.data;
 
-        // Format the data similar to your static body structure
+        // Format data for UI
         const formattedData = serverData.map(item => ({
           price: <p className='fw-bold'>${item.price}</p>,
           website: (
             <div className="d-flex">
-              <a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a> 
+              <a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a>
               <span className="text-primary"><TbSend /></span>
             </div>
           ),
@@ -60,14 +63,14 @@ const DataTable = ({ countryOption, selectedOptions, startPrice, endPrice, start
           dr: <button className="dr">{item.dr}</button>,
           ahrefTraffic: <button className="traffic">{item.ahrefTraffic}</button>,
           SEMRushTraffic: <button className="traffic">{item.SEMRushTraffic}</button>,
-          type: <div className="type">{item.type} <span>{item.duration}</span></div>, 
+          type: <div className="type">{item.type} <span>{item.duration}</span></div>,
           niche: item.niche,
           language: <button className="language">{item.language}</button>,
           category: <button className="category">{item.category}</button>,
           country: item.country,
         }));
 
-        setData(formattedData); // Set fetched and formatted data
+        setData(formattedData); // Set formatted data
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -76,7 +79,7 @@ const DataTable = ({ countryOption, selectedOptions, startPrice, endPrice, start
     fetchData();
   }, []);
 
-  // Handle filters
+  // Handle filters (Category, Country, Language, Niche)
   useEffect(() => {
     setCategory(selectedOptions?.map(option => option.value).join(',') || '');
   }, [selectedOptions]);
@@ -93,8 +96,11 @@ const DataTable = ({ countryOption, selectedOptions, startPrice, endPrice, start
     setNiche(nicheOption?.map(option => option.value).join(',') || '');
   }, [nicheOption]);
 
-  // Apply filters to data
+  // Apply filters to data, including search term
   const displayedData = data.filter(row => {
+    // Filter by Search Term (Website)
+    const searchFilter = searchTerm ? row.website.props.children[0]?.props.children.toLowerCase().includes(searchTerm) : true;
+
     const startPriceFilter = startPrice ? row.price.props.children[1] >= startPrice : true;
     const endPriceFilter = endPrice ? row.price.props.children[1] <= endPrice : true;
 
@@ -111,7 +117,7 @@ const DataTable = ({ countryOption, selectedOptions, startPrice, endPrice, start
 
     const startPAFilter = startPA ? row.pa.props.children >= startPA : true;
     const endPAFilter = endPA ? row.pa.props.children <= endPA : true;
-    
+
     const startSpamFilter = startSpam ? row.spamScore.props.children >= startSpam : true;
     const endSpamFilter = endSpam ? row.spamScore.props.children <= endSpam : true;
 
@@ -121,11 +127,12 @@ const DataTable = ({ countryOption, selectedOptions, startPrice, endPrice, start
     const startSEMRushTrafficFilter = startSEMRushTraffic ? row.SEMRushTraffic.props.children >= startSEMRushTraffic : true;
     const endSEMRushTrafficFilter = endSEMRushTraffic ? row.SEMRushTraffic.props.children <= endSEMRushTraffic : true;
 
-    return categoryFilter && startPriceFilter && endPriceFilter && countryFilter && startDRFilter && endDRFilter && startDAFilter && endDAFilter && languageFilter && nicheFilter && startPAFilter && endPAFilter && startSpamFilter && endSpamFilter && startAhrefTrafficFilter && endAhrefTrafficFilter && startSEMRushTrafficFilter && endSEMRushTrafficFilter;
+    return searchFilter && categoryFilter && startPriceFilter && endPriceFilter && countryFilter && startDRFilter && endDRFilter && startDAFilter && endDAFilter && languageFilter && nicheFilter && startPAFilter && endPAFilter && startSpamFilter && endSpamFilter && startAhrefTrafficFilter && endAhrefTrafficFilter && startSEMRushTrafficFilter && endSEMRushTrafficFilter;
   });
 
   return (
     <div className="container mt-5 table-responsive">
+
       <Table>
         <DatatableWrapper
           body={displayedData}

@@ -6,8 +6,7 @@ import { FaFilter } from "react-icons/fa6";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { TbSend } from "react-icons/tb";
 import { FaEdit } from 'react-icons/fa';
-import Swal from 'sweetalert2'
-
+import Swal from 'sweetalert2';
 
 import '../assets/css/style.css';
 import {
@@ -38,9 +37,9 @@ const header = [
   { title: 'Country', prop: 'country', sortable: true },
 ];
 
-function SiteList({handleRenderAddSites , onEdit}) {
-  const [search, setSearch] = useState('');
-  const [data, setData] = useState([]);
+function SiteList({ handleRenderAddSites, onEdit }) {
+  const [search, setSearch] = useState(''); // Search input state
+  const [data, setData] = useState([]); // Data state
   const navigate = useNavigate();
 
   const handleBack = () => {
@@ -53,40 +52,7 @@ function SiteList({handleRenderAddSites , onEdit}) {
       try {
         const response = await axios.get('http://3.110.194.148:5000/api/data'); // Adjust URL as needed
         const serverData = response.data;
-
-        // Format the data to retain _id for deletion purpose
-        const formattedData = serverData.map(item => ({
-          _id: item._id,  // Retain the _id for delete operation
-          action: (
-            <>
-              <button className='delete-btn' onClick={() => { handleDelete(item._id, item.website); }}>
-                <RiDeleteBin6Line />
-              </button>
-              <button className='edit-btn' onClick={() => { onEdit(item); }}><FaEdit /></button>
-
-            </>
-          ),
-          price: <p className='fw-bold'>${item.price}</p>,
-          website: (
-            <div className="d-flex">
-              <a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a>
-              <span className="text-primary"><TbSend /></span>
-            </div>
-          ),
-          da: <button className="dr">{item.da}</button>,
-          pa: <button className="dr">{item.pa}</button>,
-          spamScore: <button className="da">{item.spamScore}</button>,
-          dr: <button className="dr">{item.dr}</button>,
-          ahrefTraffic: <button className="traffic">{item.ahrefTraffic}</button>,
-          SEMRushTraffic: <button className="traffic">{item.SEMRushTraffic}</button>,
-          type: <div className="type">{item.type} <span>{item.duration}</span></div>,
-          niche: item.niche,
-          language: <button className="language">{item.language}</button>,
-          category: <button className="category">{item.category}</button>,
-          country: item.country,
-        }));
-
-        setData(formattedData);
+        setData(serverData); // Store raw server data
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -95,15 +61,51 @@ function SiteList({handleRenderAddSites , onEdit}) {
     fetchData();
   }, []);
 
+  // Handle search input change
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
 
+  // Filter data based on search query (before converting to JSX)
+  const filteredData = data.filter(item =>
+    item.website.toLowerCase().includes(search.toLowerCase()) // Directly filter the website string
+  );
+
+  // Map filtered data into the required format for the table
+  const formattedData = filteredData.map(item => ({
+    _id: item._id,
+    action: (
+      <>
+        <button className='delete-btn' onClick={() => { handleDelete(item._id, item.website); }}>
+          <RiDeleteBin6Line />
+        </button>
+        <button className='edit-btn' onClick={() => { onEdit(item); }}><FaEdit /></button>
+      </>
+    ),
+    price: <p className='fw-bold'>${item.price}</p>,
+    website: (
+      <div className="d-flex">
+        <a href={item.website} target="_blank" rel="noopener noreferrer">{item.website}</a>
+        <span className="text-primary"><TbSend /></span>
+      </div>
+    ),
+    da: <button className="dr">{item.da}</button>,
+    pa: <button className="dr">{item.pa}</button>,
+    spamScore: <button className="da">{item.spamScore}</button>,
+    dr: <button className="dr">{item.dr}</button>,
+    ahrefTraffic: <button className="traffic">{item.ahrefTraffic}</button>,
+    SEMRushTraffic: <button className="traffic">{item.SEMRushTraffic}</button>,
+    type: <div className="type">{item.type} <span>{item.duration}</span></div>,
+    niche: item.niche,
+    language: <button className="language">{item.language}</button>,
+    category: <button className="category">{item.category}</button>,
+    country: item.country,
+  }));
+
   const handleDelete = async (id, web) => {
     try {
-      // Display confirmation alert and wait for the user's response
       const result = await Swal.fire({
-        title: `Are you sure to delete ${web} ?`,
+        title: `Are you sure to delete ${web}?`,
         text: "You won't be able to revert this!",
         icon: "warning",
         showCancelButton: true,
@@ -111,16 +113,11 @@ function SiteList({handleRenderAddSites , onEdit}) {
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!"
       });
-  
-      // Check if the user confirmed the action
+
       if (result.isConfirmed) {
-        // Proceed with the deletion
         await axios.delete(`http://3.110.194.148:5000/api/data/${id}`);
-  
-        // Update state to remove the deleted item from the list
         setData(prevData => prevData.filter(item => item._id !== id));
-  
-        // Display success message after deletion
+
         Swal.fire({
           title: "Deleted!",
           text: `Your ${web} has been deleted.`,
@@ -129,8 +126,6 @@ function SiteList({handleRenderAddSites , onEdit}) {
       }
     } catch (error) {
       console.error('Error deleting data:', error);
-  
-      // Handle error with an error alert
       Swal.fire({
         title: "Error!",
         text: "There was a problem deleting the data.",
@@ -138,7 +133,6 @@ function SiteList({handleRenderAddSites , onEdit}) {
       });
     }
   };
-  
 
   return (
     <>
@@ -159,18 +153,20 @@ function SiteList({handleRenderAddSites , onEdit}) {
             <div className="card-body">
               <div className="table-responsive">
                 <div className='d-flex align-items-center justify-content-between'>
+                  {/* Search Input */}
                   <input
                     type="text"
                     className="form-control mb-3 w-25"
-                    placeholder="Search..."
+                    placeholder="Search by website..."
                     value={search}
                     onChange={handleSearch}
                   />
                   <button className='clear-btn py-2'><FaFilter /></button>
                 </div>
+
                 <Table>
                   <DatatableWrapper
-                    body={data}
+                    body={formattedData}  // Use the formatted data
                     headers={header}
                     paginationOptionsProps={{
                       initialState: {
