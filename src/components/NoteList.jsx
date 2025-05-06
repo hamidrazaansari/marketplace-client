@@ -30,7 +30,7 @@ function NotesList({ handleRenderAddNote, onEdit }) {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const resp = await axios.get('http://localhost:5000/api/notes');
+        const resp = await axios.get('http://52.66.237.19:5000/api/notes');
         setNotes(resp.data);
       } catch (error) {
         console.log('Error fetching notes', error);
@@ -51,7 +51,7 @@ function NotesList({ handleRenderAddNote, onEdit }) {
         confirmButtonText: "Yes, delete it!"
       }); 
       if (result.isConfirmed) {
-        await axios.delete(`http://localhost:5000/api/notes/${id}`);
+        await axios.delete(`http://52.66.237.19:5000/api/notes/${id}`);
         setNotes(notes.filter((note) => note._id !== id));
         Swal.fire({
           title: "Deleted!",

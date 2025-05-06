@@ -41,7 +41,7 @@ function NicheList({ handleRenderAddNiche, onEdit }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const resp = await axios.get('http://localhost:5000/api/niche');
+        const resp = await axios.get('http://52.66.237.19:5000/api/niche');
         setNiche(resp.data);
       } catch (error) {
         console.log('Error fetching niche data', error);
@@ -62,7 +62,7 @@ function NicheList({ handleRenderAddNiche, onEdit }) {
         confirmButtonText: "Yes, delete it!"
       });
       if (result.isConfirmed) {
-        await axios.delete(`http://localhost:5000/api/niche/${id}`);
+        await axios.delete(`http://52.66.237.19:5000/api/niche/${id}`);
         setNiche((prevNiche) => prevNiche.filter(item => item._id !== id));
         
         Swal.fire({

@@ -40,7 +40,7 @@ function CategoryList({ handleRenderAddCategory, onEdit }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const resp = await axios.get('http://localhost:5000/api/category');
+        const resp = await axios.get('http://52.66.237.19:5000/api/category');
         setCategory(resp.data);
       } catch (error) {
         console.log('error aa rha hai data fetch karne me', error);
@@ -62,7 +62,7 @@ function CategoryList({ handleRenderAddCategory, onEdit }) {
       });
             if (result.isConfirmed) {
         // Make a DELETE request to your backend to delete the data
-        await axios.delete(`http://localhost:5000/api/category/${id}`);
+        await axios.delete(`http://52.66.237.19:5000/api/category/${id}`);
 
         // Filter out the deleted item from the state
         setCategory((prevCategory) => prevCategory.filter(item => item._id !== id));
