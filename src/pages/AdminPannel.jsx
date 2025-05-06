@@ -79,7 +79,7 @@ function AdminPannel({handleRenderAddSites , siteForEdit }) {
   useEffect(() => {
     const fetchOptions = async () => {
       try {
-        const categoriesResponse = await axios.get('http://3.110.194.148:5000/api/category');
+        const categoriesResponse = await axios.get('http://localhost:5000/api/category');
         const categories = categoriesResponse.data
         .filter(category => category.activeindicator === 'Active') 
         .map(category => ({
@@ -89,7 +89,7 @@ function AdminPannel({handleRenderAddSites , siteForEdit }) {
         setCategoryOptions(categories);
         setAllCategory(categoriesResponse.data)
 
-        const languagesResponse = await axios.get('http://3.110.194.148:5000/api/languages');
+        const languagesResponse = await axios.get('http://localhost:5000/api/languages');
         const languages = languagesResponse.data
         .filter(lang => lang.activeindicator === 'Active') 
         .map(lang => ({
@@ -99,7 +99,7 @@ function AdminPannel({handleRenderAddSites , siteForEdit }) {
         setLangOptions(languages);
         setAllLanguage(languagesResponse.data)
 
-        const countryResponse = await axios.get('http://3.110.194.148:5000/api/country');
+        const countryResponse = await axios.get('http://localhost:5000/api/country');
         const countries = countryResponse.data
         .filter(country => country.activeindicator === 'Active') 
         .map(country => ({
@@ -109,7 +109,7 @@ function AdminPannel({handleRenderAddSites , siteForEdit }) {
         setCountryOptions(countries);
         setAllCountry(countryResponse.data)
 
-        const nicheResponse = await axios.get('http://3.110.194.148:5000/api/niche');
+        const nicheResponse = await axios.get('http://localhost:5000/api/niche');
         const niches = nicheResponse.data
         .filter(niche => niche.activeindicator === 'Active') 
         .map(niche => ({
@@ -152,7 +152,7 @@ function AdminPannel({handleRenderAddSites , siteForEdit }) {
     e.preventDefault();
     try {
       if (isEditing) {
-        await axios.put(`http://3.110.194.148:5000/api/data/${siteForEdit._id}`, formData);
+        await axios.put(`http://localhost:5000/api/data/${siteForEdit._id}`, formData);
         Swal.fire({
           icon: "success",
           title: "Data updated successfully",
@@ -161,7 +161,7 @@ function AdminPannel({handleRenderAddSites , siteForEdit }) {
         });
         
       } else {
-        await axios.post('http://3.110.194.148:5000/api/data', formData);
+        await axios.post('http://localhost:5000/api/data', formData);
         Swal.fire({
           icon: "success",
           title: "Data submitted successfully",
@@ -193,7 +193,7 @@ function AdminPannel({handleRenderAddSites , siteForEdit }) {
 
   const handleBulkDataSubmit = async () => {
     try {
-      await axios.post('http://3.110.194.148:5000/api/bulkData', bulkData);
+      await axios.post('http://localhost:5000/api/bulkData', bulkData);
       Swal.fire({
         icon: "success",
         title: "All data submitted successfully",

@@ -34,7 +34,7 @@ function AddLanguage({ handleRenderAddLang, langForEdit }) {
     try {
       if (isEditing) {
         // Update existing language (PUT request)
-        await axios.put(`http://3.110.194.148:5000/api/languages/${langForEdit._id}`, { langName, activeindicator });
+        await axios.put(`http://localhost:5000/api/languages/${langForEdit._id}`, { langName, activeindicator });
         Swal.fire({
           icon: "success",
           title: "Language updated successfully",
@@ -43,7 +43,7 @@ function AddLanguage({ handleRenderAddLang, langForEdit }) {
         });
       } else {
         // Add new language (POST request)
-        await axios.post('http://3.110.194.148:5000/api/languages', { langName, activeindicator });
+        await axios.post('http://localhost:5000/api/languages', { langName, activeindicator });
         Swal.fire({
           icon: "success",
           title: "New language added successfully",

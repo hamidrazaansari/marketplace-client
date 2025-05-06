@@ -81,7 +81,7 @@ function MarketPlace() {
     const fetchOptions = async () => {
       try {
         // Fetch categories
-        const categoriesResponse = await axios.get('http://3.110.194.148:5000/api/category'); // Adjust URL as needed
+        const categoriesResponse = await axios.get('http://localhost:5000/api/category'); // Adjust URL as needed
         const activeCategories = categoriesResponse.data
           .filter(category => category.activeindicator === 'Active') // Filter for active categories
           .map(category => ({
@@ -89,7 +89,7 @@ function MarketPlace() {
             label: category.categoryName,
           }));
         setCategoryOptions(activeCategories);
-        const languagesResponse = await axios.get('http://3.110.194.148:5000/api/languages');
+        const languagesResponse = await axios.get('http://localhost:5000/api/languages');
         const languages = languagesResponse.data
           .filter(lang => lang.activeindicator === 'Active')
           .map(lang => ({
@@ -98,7 +98,7 @@ function MarketPlace() {
           }));
         setLangOptions(languages)
 
-        const countryResponse = await axios.get('http://3.110.194.148:5000/api/country');
+        const countryResponse = await axios.get('http://localhost:5000/api/country');
         const countries = countryResponse.data
           .filter(country => country.activeindicator === 'Active')
           .map(country => ({
@@ -107,7 +107,7 @@ function MarketPlace() {
           }));
         setCountryOptions(countries)
 
-        const nicheResponse = await axios.get('http://3.110.194.148:5000/api/niche');
+        const nicheResponse = await axios.get('http://localhost:5000/api/niche');
         const niches = nicheResponse.data
           .filter(niche => niche.activeindicator === 'Active')
           .map(niche => ({
@@ -125,7 +125,7 @@ function MarketPlace() {
 
 
     const fetchNotes = async () => {
-      const notesres = await axios.get('http://3.110.194.148:5000/api/notes')
+      const notesres = await axios.get('http://localhost:5000/api/notes')
       setNote(notesres.data)
     }
     fetchNotes();

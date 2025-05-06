@@ -40,7 +40,7 @@ function CountryList({ handleRenderAddCountry, onEdit }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const resp = await axios.get('http://3.110.194.148:5000/api/country');
+        const resp = await axios.get('http://localhost:5000/api/country');
         setCountries(resp.data);
       } catch (error) {
         console.log('Error fetching country data', error);
@@ -61,7 +61,7 @@ function CountryList({ handleRenderAddCountry, onEdit }) {
         confirmButtonText: "Yes, delete it!"
       });
             if (result.isConfirmed) {
-        await axios.delete(`http://3.110.194.148:5000/api/country/${id}`);
+        await axios.delete(`http://localhost:5000/api/country/${id}`);
         setCountries((prevCountries) => prevCountries.filter(item => item._id !== id));
         Swal.fire({
           title: "Deleted!",

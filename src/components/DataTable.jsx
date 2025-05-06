@@ -45,7 +45,7 @@ const DataTable = ({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://3.110.194.148:5000/api/data');
+        const response = await axios.get('http://localhost:5000/api/data');
         const serverData = response.data;
 
         // Format data for UI

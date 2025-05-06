@@ -40,7 +40,7 @@ function LanguageList({ handleRenderAddLang, onEdit }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const resp = await axios.get('http://3.110.194.148:5000/api/languages');
+        const resp = await axios.get('http://localhost:5000/api/languages');
         setLanguage(resp.data);
       } catch (error) {
         console.log('error aa rha hai data fetch karne me', error);
@@ -64,7 +64,7 @@ function LanguageList({ handleRenderAddLang, onEdit }) {
 
       if (result.isConfirmed) {
         // Make a DELETE request to your backend to delete the data
-        await axios.delete(`http://3.110.194.148:5000/api/languages/${id}`);
+        await axios.delete(`http://localhost:5000/api/languages/${id}`);
 
         // Filter out the deleted item from the state
         setLanguage((prevLanguage) => prevLanguage.filter(item => item._id !== id));

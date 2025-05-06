@@ -34,7 +34,7 @@ function AddNiche({ handleRenderAddNiche, nicheForEdit }) {
     try {
       if (isEditing) {
         // Update existing niche (PUT request)
-        await axios.put(`http://3.110.194.148:5000/api/niche/${nicheForEdit._id}`, { nicheName, activeindicator });
+        await axios.put(`http://localhost:5000/api/niche/${nicheForEdit._id}`, { nicheName, activeindicator });
         Swal.fire({
           icon: "success",
           title: "Niche updated successfully",
@@ -43,7 +43,7 @@ function AddNiche({ handleRenderAddNiche, nicheForEdit }) {
         });
       } else {
         // Add new niche (POST request)
-        await axios.post('http://3.110.194.148:5000/api/niche', { nicheName, activeindicator });
+        await axios.post('http://localhost:5000/api/niche', { nicheName, activeindicator });
         Swal.fire({
           icon: "success",
           title: "New niche added successfully",

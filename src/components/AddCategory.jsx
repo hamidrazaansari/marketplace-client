@@ -33,12 +33,12 @@ function AddCategory({ handleRenderAddCategory, categoryForEdit }) {
     try {
       if (isEditing) {
         // Update existing language (PUT request)
-         await axios.put(`http://3.110.194.148:5000/api/category/${categoryForEdit._id}`, { categoryName, activeindicator });
+         await axios.put(`http://localhost:5000/api/category/${categoryForEdit._id}`, { categoryName, activeindicator });
           alert('category updated successfully');
 
       } else {
         // Add new language (POST request)
-         await axios.post('http://3.110.194.148:5000/api/category', { categoryName, activeindicator });
+         await axios.post('http://localhost:5000/api/category', { categoryName, activeindicator });
         alert('New category added successfully');
       }
       handleRenderAddCategory();

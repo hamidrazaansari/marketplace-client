@@ -5,6 +5,7 @@ import { FaBarsStaggered } from "react-icons/fa6";
 import { IoSearch } from "react-icons/io5";
 import { CiMail } from "react-icons/ci";
 import { FaRegBell } from "react-icons/fa";
+import {Link} from 'react-router-dom'
 
 // import { Dropdown, DropdownButton, Nav } from 'react-bootstrap';
 
@@ -15,7 +16,7 @@ function NavBar() {
     <div>
     <nav className="navbar p-0 fixed-top d-flex flex-row">
       <div className="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a className="navbar-brand brand-logo me-5" href="index.html"><img src={logo} className="me-2" alt="logo"/></a>
+        <Link className="navbar-brand brand-logo me-5" to="/"><img src={logo} className="me-2" alt="logo"/></Link>
       </div>
       <div className="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button className="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">

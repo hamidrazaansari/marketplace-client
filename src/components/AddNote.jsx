@@ -32,7 +32,7 @@ function AddNote({ handleRenderAddNote, noteForEdit }) {
     try {
       if (isEditing) {
         // Update existing note (PUT request)
-        await axios.put(`http://3.110.194.148:5000/api/notes/${noteForEdit._id}`, { activeindicator, content });
+        await axios.put(`http://localhost:5000/api/notes/${noteForEdit._id}`, { activeindicator, content });
         Swal.fire({
           icon: "success",
           title: "Note updated successfully",
@@ -41,7 +41,7 @@ function AddNote({ handleRenderAddNote, noteForEdit }) {
         });
       } else {
         // Add new note (POST request)
-        await axios.post('http://3.110.194.148:5000/api/notes', { activeindicator, content });
+        await axios.post('http://localhost:5000/api/notes', { activeindicator, content });
         Swal.fire({
           icon: "success",
           title: "New note added successfully",

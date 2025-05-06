@@ -34,7 +34,7 @@ function AddCountry({ handleRenderAddCountry, countryForEdit }) {
     try {
       if (isEditing) {
         // Update existing country (PUT request)
-        await axios.put(`http://3.110.194.148:5000/api/country/${countryForEdit._id}`, { countryName, activeindicator });
+        await axios.put(`http://localhost:5000/api/country/${countryForEdit._id}`, { countryName, activeindicator });
         Swal.fire({
           icon: "success",
           title: "Country updated successfully",
@@ -43,7 +43,7 @@ function AddCountry({ handleRenderAddCountry, countryForEdit }) {
         });
       } else {
         // Add new country (POST request)
-        await axios.post('http://3.110.194.148:5000/api/country', { countryName, activeindicator });
+        await axios.post('http://localhost:5000/api/country', { countryName, activeindicator });
         Swal.fire({
           icon: "success",
           title: "New country added successfully",

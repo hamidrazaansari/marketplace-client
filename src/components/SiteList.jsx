@@ -50,7 +50,7 @@ function SiteList({ handleRenderAddSites, onEdit }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://3.110.194.148:5000/api/data'); // Adjust URL as needed
+        const response = await axios.get('http://localhost:5000/api/data'); // Adjust URL as needed
         const serverData = response.data;
         setData(serverData); // Store raw server data
       } catch (error) {
@@ -115,7 +115,7 @@ function SiteList({ handleRenderAddSites, onEdit }) {
       });
 
       if (result.isConfirmed) {
-        await axios.delete(`http://3.110.194.148:5000/api/data/${id}`);
+        await axios.delete(`http://localhost:5000/api/data/${id}`);
         setData(prevData => prevData.filter(item => item._id !== id));
 
         Swal.fire({
